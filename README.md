@@ -4,7 +4,7 @@ Jumper is a quick navigating tool that shows up in front of the web application 
 # Installation
 This version requires the following javascript libraries:
 - jQuery 1.11.2+ (http://jquery.com/download/)
-- Bootstrap 3.3.2+ (http://getbootstrap.com)(non-bootstrap version in the future)
+- Bootstrap 3.3.2+ (http://getbootstrap.com/) (non-bootstrap version in the future)
 - Bootstrap-Dialog (https://github.com/nakupanda/bootstrap3-dialog) (non-bootstrap version in the future)
 - Selectize.js (https://github.com/brianreavis/selectize.js)
 
