@@ -46,7 +46,20 @@ Jumper({
   'bindLetter': 'F'
 });
 ```
-Also you can use remote collections using the Ajax option:
+Also you can use remote collections using the Ajax option, the data must in the "response" variable in JSON format.
+```php
+  $data = 
+  [
+    [
+      'name' => 'Home',
+      'url' => '/',
+      'help' => 'Home of this website.', 
+      'keywords' => 'home,index,site', 
+      'navcode' => 'HOME'
+    ]
+  ];
+  print json_encode(['response' => $data]);
+```
 ```javascript
 Jumper({
   'ajax':true,
@@ -63,6 +76,20 @@ Jumper({
   'cache': true,
   'bindFnKeys': 'event.ctrlKey',
   'bindLetter': 'F'
+});
+```
+## Language
+You can change Jumper texts by setting the TEXT variables before initializing:
+```javascript
+// Spanish Language Texts for Jumper.
+Jumper.TEXT_DefaultTitle = 'Navegación rápida';
+Jumper.TEXT_Loading = 'Cargando datos, espere porfavor...';
+Jumper.TEXT_Navigating = 'Navegando, espere porfavor...';
+Jumper.TEXT_QuickNav = 'Escriba aquí un término para navegar rápidamente por el sitio web.';
+Jumper({
+  'ajax':true,
+  'ajaxserver': '/server.php',
+  'cache': true
 });
 ```
 # License
