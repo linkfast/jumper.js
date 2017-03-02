@@ -96,5 +96,5 @@ Jumper({
 });
 ```
 # License
-Released under the GPLv3.
-(C) 2015 QOX Corporation.
+Released under the MIT Licence.
+(C) 2017 QOX Corporation.
