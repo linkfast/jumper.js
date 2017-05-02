@@ -111,7 +111,7 @@ Jumper.UpdateBSD = function (setHtml) {
                     }
                 }
                 if (typeof item.action.method != 'undefined') {
-                    if (item.action.method != null) {
+                    if (item.action.method != null) {                        
                         item.action.method(item)
                     }
                 }
