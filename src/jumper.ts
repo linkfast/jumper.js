@@ -1,49 +1,55 @@
-Jumper = function (options) {
+/* QOX Corporation
+ Jumper.js
+ https://github.com/QOXCorp/jumper.js
+ 0.0.4
+ (C) 2017 - Giancarlo Chiappe Aguilar <gchiappe@qox-corp.com>
+ */
+
+///<reference path="jumper.d.ts"/>
+///<reference path="bootstrap-dialog.d.ts"/>
+
+Jumper = (options: JumperOptions) => {
     if (typeof options == 'undefined') {
         console.error('QOX Jumper options not stablished.');
     }
     if (typeof options.debug == 'undefined') {
-        Jumper.Options.debug = false;
-    }
-    else {
+        Jumper.Options.debug = false
+    } else {
         Jumper.Options.debug = options.debug;
     }
-    Jumper.Log('Initilizing QOX Jumper.');
+    Jumper.Log('Initilizing QOX Jumper.')
     if (typeof options.bindFnKeys != 'undefined') {
-        Jumper.Options.bindFnKeys = options.bindFnKeys;
+        Jumper.Options.bindFnKeys = options.bindFnKeys
     }
     if (typeof options.bindLetter == 'undefined') {
-        options.bindLetter = 'J';
+        options.bindLetter = 'J'
     }
     if (typeof options.cache != 'undefined') {
-        Jumper.Cache = options.cache;
+        Jumper.Cache = options.cache
     }
     if (typeof options.data != 'undefined') {
-        Jumper.Options.data = options.data;
-    }
-    else {
+        Jumper.Options.data = options.data
+    } else {
         if (typeof options.ajax == 'undefined') {
-            console.error('QOX Jumper: No data source defined.');
-        }
-        else {
-            Jumper.Options.ajax = true;
-            Jumper.Options.ajaxserver = options.ajaxserver;
+            console.error('QOX Jumper: No data source defined.')
+        } else {
+            Jumper.Options.ajax = true
+            Jumper.Options.ajaxserver = options.ajaxserver
         }
     }
     if (typeof jQuery == 'undefined') {
-        console.error('QOX Jumper requires jQuery.');
+        console.error('QOX Jumper requires jQuery.')
         return;
     }
     if (typeof $().selectize == 'undefined') {
-        console.error('QOX Jumper requires Selectize.js (https://github.com/brianreavis/selectize.js).');
+        console.error('QOX Jumper requires Selectize.js (https://github.com/brianreavis/selectize.js).')
         return;
     }
     if ((typeof $().emulateTransitionEnd == 'function')) {
         if (typeof BootstrapDialog === 'undefined') {
-            console.error('QOX Jumper for Bootstrap requires Bootstrap-Dialog (https://github.com/nakupanda/bootstrap3-dialog).');
+            console.error('QOX Jumper for Bootstrap requires Bootstrap-Dialog (https://github.com/nakupanda/bootstrap3-dialog).')
             return;
-        }
-        else {
+        } else {
             Jumper.Bootstrap3 = true;
         }
     }
@@ -51,6 +57,7 @@ Jumper = function (options) {
     Jumper.Options.cacheAtInit = true;
     $(window).bind('keydown', function (event) {
         if (eval(Jumper.Options.bindFnKeys)) {
+            //console.log(String.fromCharCode(event.which).toLowerCase());
             switch (String.fromCharCode(event.which).toLowerCase()) {
                 case Jumper.Options.bindLetter:
                     event.preventDefault();
@@ -60,8 +67,7 @@ Jumper = function (options) {
         }
     });
     var showKeys = 'CONTROL/COMMAND';
-    if (Jumper.Options.bindFnKeys != Jumper.KeysControl)
-        showKeys = Jumper.Options.bindFnKeys;
+    if (Jumper.Options.bindFnKeys != Jumper.KeysControl) showKeys = Jumper.Options.bindFnKeys;
     Jumper.Log('QOX Jumper: Initialized. (Open with: ' + showKeys + ' + ' + Jumper.Options.bindLetter.toUpperCase() + ')');
     if (Jumper.Options.ajax && Jumper.Cache && Jumper.Options.cacheAtInit) {
         Jumper.Log('QOX Jumper: PreCaching results @ Init...');
@@ -72,10 +78,12 @@ Jumper = function (options) {
         }, 'json');
     }
     Jumper.Initialized = true;
-};
+}
+
 Jumper.UpdateBSD = function (setHtml) {
     if (!(typeof setHtml != 'undefined' && setHtml)) {
-        var html = '<input class="selectize-input items not-full has-options" id="jumper_text" style="width:100%" type="text" autocomplete="off" placeholder="' + Jumper.TEXT_QuickNav +
+        var html =
+            '<input class="selectize-input items not-full has-options" id="jumper_text" style="width:100%" type="text" autocomplete="off" placeholder="' + Jumper.TEXT_QuickNav +
             '">';
         Jumper.BSD_Object.setMessage(html);
     }
@@ -90,10 +98,10 @@ Jumper.UpdateBSD = function (setHtml) {
         searchField: ['name', 'help', 'keywords', 'navcode'],
         options: Jumper.Options.data,
         render: {
-            item: function (item, escape) {
+            item: function (item: JumperData, escape) {
                 $("#jumper_text").attr('disabled', 'disabled');
                 if (item.action.useItemHandler) {
-                    Jumper.ItemHandler(item);
+                    Jumper.ItemHandler(item)
                 }
                 if (typeof item.action.url != 'undefined') {
                     if (item.action.url != null) {
@@ -104,7 +112,7 @@ Jumper.UpdateBSD = function (setHtml) {
                 }
                 if (typeof item.action.method != 'undefined') {
                     if (item.action.method != null) {
-                        item.action.method(item);
+                        item.action.method(item)
                     }
                 }
                 setTimeout(function () {
@@ -124,14 +132,15 @@ Jumper.UpdateBSD = function (setHtml) {
                     '<span class="text-muted">' +
                     escape(caption) +
                     '</span><br>' +
+
                     (item.keywords ? '<span style="color: #000;">' + Jumper.TEXT_Keywords + '</span>' +
                         '&nbsp;<span class="text-muted">' + escape(item.keywords) + '</span>' : '')
+
                     + '</div>';
             }
         },
         load: function (query, callback) {
-            if (!query.length)
-                return callback();
+            if (!query.length) return callback();
         }
     });
     var selectize = $select[0].selectize;
@@ -139,12 +148,13 @@ Jumper.UpdateBSD = function (setHtml) {
         selectize.focus();
     }, 50);
 };
+
 Jumper.Open = function () {
     if (Jumper.Initialized) {
         if (Jumper.Bootstrap3) {
             if (!Jumper.BSD_Open) {
-                Jumper.Log('Triggered!');
-                var Modal = {
+                Jumper.Log('Triggered!')
+                var Modal : IBootstrapDialogOptions = {               
                     title: Jumper.TEXT_DefaultTitle,
                     draggable: false,
                     closable: true,
@@ -162,7 +172,12 @@ Jumper.Open = function () {
                     }
                 };
                 if (Jumper.Options.ajax && !Jumper.InCache) {
-                    Modal.message = "<div style=\"text-align: center;\">\n                    <p>\n                    <i class=\"fa fa-refresh fa-spin\"></i><br>\n                    " + Jumper.TEXT_Loading + "\n                    </p>\n                    </div>";
+                    Modal.message = `<div style="text-align: center;">
+                    <p>
+                    <i class="fa fa-refresh fa-spin"></i><br>
+                    ${Jumper.TEXT_Loading}
+                    </p>
+                    </div>`
                     Modal.onshown = function () {
                         Jumper.Log('QOX Jumper: Getting data.');
                         $.post(Jumper.Options.ajaxserver, { 'jumper_version': Jumper.VERSION }, function (data) {
@@ -173,8 +188,7 @@ Jumper.Open = function () {
                             Jumper.UpdateBSD(false);
                         }, 'json');
                     };
-                }
-                else {
+                } else {
                     if (Jumper.Cache) {
                         console.log('QOX Jumper: Using Cached data.');
                     }
@@ -186,23 +200,24 @@ Jumper.Open = function () {
                 }
                 Jumper.BSD_Object = BootstrapDialog.show(Modal);
             }
-        }
-        else {
+        } else {
             console.error('Support for non-bootstrap sites in the future. Sorry.');
         }
     }
-};
-Jumper.Log = function () {
+}
+Jumper.Log = function() {
     if (Jumper.Options.debug) {
-        console.log.apply(console, arguments);
+        console.log.apply(console, arguments)
     }
-};
-Jumper.ItemHandler = function (item) {
-    Jumper.Log('Default Item Handler, Item:', item);
-};
-Jumper.VERSION = '0.0.4';
-Jumper.Initialized = false;
-Jumper.Bootstrap3 = false;
+}
+Jumper.ItemHandler = (item) => {
+    Jumper.Log('Default Item Handler, Item:', item)
+}
+
+Jumper.VERSION = '0.0.4'
+
+Jumper.Initialized = false
+Jumper.Bootstrap3 = false
 Jumper.Options = {
     bindFnKeys: 'event.ctrlKey || event.metaKey',
     bindLetter: 'J',
@@ -211,14 +226,17 @@ Jumper.Options = {
     ajaxserver: '',
     cacheAtInit: false,
     debug: false
-};
-Jumper.BSD_Object = null;
-Jumper.Cache = false;
-Jumper.InCache = false;
+}
+Jumper.BSD_Object = null
+
+Jumper.Cache = false
+Jumper.InCache = false
+
 Jumper.TEXT_Loading = 'Loading data, please wait...';
 Jumper.TEXT_DefaultTitle = '<b>Jumper</b>';
 Jumper.TEXT_QuickNav = 'Quick site navigation, type a term.';
 Jumper.TEXT_Navigating = 'Navigating...';
 Jumper.TEXT_Keywords = 'Keywords:';
+
 Jumper.BSD_Open = false;
 Jumper.BSD_AjaxLoader = {};
