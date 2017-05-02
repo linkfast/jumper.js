@@ -42,9 +42,9 @@ interface JumperIntOptions {
 
 interface JumperObj {
     (options: JumperOptions): void
-    UpdateBSD?: (setHtml: any) => void
+    UpdateBSD?: (setHtml: boolean) => void
     Open?: () => void
-    Log?: (message: string) => void
+    Log?: (...args: any[]) => void
     ItemHandler?: (item: JumperData) => void
     Options?: JumperIntOptions
 
@@ -66,4 +66,7 @@ interface JumperObj {
     TEXT_Keywords?: string
 }
 
-let Jumper: JumperObj
+declare module "jumper" {
+    export = Jumper
+}
+declare var Jumper: JumperObj

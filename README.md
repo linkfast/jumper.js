@@ -3,6 +3,13 @@ Jumper is a quick navigating tool that shows up in front of the web application 
 
 Demo and more: http://qoxcorp.github.io/jumper.js/
 
+# Building from source
+
+```
+$ npm install
+$ gulp
+```
+
 # Installation
 This version requires the following javascript libraries:
 - jQuery 1.11.2+ (http://jquery.com/download/)
@@ -13,8 +20,18 @@ This version requires the following javascript libraries:
 ## Download
 Distribution scripts are in the "dist" folder then load as usual in your project.
 
+### Using npm
+```
+  npm install --save jumper
+```
+
+
+## Typescript Definition
+
+The definition file for Typescript is located at `src/js/jumper.d.t`.
+
 ## Usage
-###Initialize Jumper using:
+### Initialize Jumper using:
 ```javascript
 Jumper(options);
 ```

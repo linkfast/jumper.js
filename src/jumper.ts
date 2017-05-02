@@ -6,6 +6,7 @@
  */
 
 ///<reference path="jumper.d.ts"/>
+///<reference path="bootstrap-dialog.d.ts"/>
 
 Jumper = (options: JumperOptions) => {
     if (typeof options == 'undefined') {
@@ -153,19 +154,19 @@ Jumper.Open = function () {
         if (Jumper.Bootstrap3) {
             if (!Jumper.BSD_Open) {
                 Jumper.Log('Triggered!')
-                var Modal = {
-                    'title': Jumper.TEXT_DefaultTitle,
-                    'draggable': false,
-                    'closable': true,
-                    'closeByBackdrop': true,
-                    'closeByKeyboard': true,
-                    'onhide': function () {
+                var Modal : IBootstrapDialogOptions = {               
+                    title: Jumper.TEXT_DefaultTitle,
+                    draggable: false,
+                    closable: true,
+                    closeByBackdrop: true,
+                    closeByKeyboard: true,
+                    onhide: function () {
                         Jumper.BSD_Open = false;
                     },
-                    'onhidden': function () {
+                    onhidden: function () {
                         Jumper.BSD_Open = false;
                     },
-                    'onshow': function () {
+                    onshow: function () {
                         Jumper.BSD_Open = true;
                         $('.modal-footer').remove();
                     }
@@ -184,7 +185,7 @@ Jumper.Open = function () {
                             if (Jumper.Cache) {
                                 Jumper.InCache = true;
                             }
-                            Jumper.UpdateBSD();
+                            Jumper.UpdateBSD(false);
                         }, 'json');
                     };
                 } else {
@@ -204,18 +205,16 @@ Jumper.Open = function () {
         }
     }
 }
-Jumper.ItemHandler = (item) => {
-    Jumper.Log('Default Item Handler, Item:', item)
-}
-Jumper.Log = () => {
+Jumper.Log = function() {
     if (Jumper.Options.debug) {
         console.log.apply(console, arguments)
     }
 }
-
+Jumper.ItemHandler = (item) => {
+    Jumper.Log('Default Item Handler, Item:', item)
+}
 
 Jumper.VERSION = '0.0.4'
-//Jumper.KeysControl = 'event.ctrlKey || event.metaKey'
 
 Jumper.Initialized = false
 Jumper.Bootstrap3 = false
