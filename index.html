@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <link rel="shortcut icon" href="//www.qox-corp.com/favicon.png" type="image/png">
@@ -10,207 +11,211 @@
 <link href="//cdn.rawgit.com/brianreavis/selectize.js/master/dist/css/selectize.bootstrap3.css" rel="stylesheet">
 <link href="//cdn.rawgit.com/michaelhue/keyscss/master/keys.css" rel="stylesheet">
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
-<body>
-<div class="container">
-    <div class="panel panel-default" style="margin: 20px 0">
-        <div class="panel-body">
-        <nav>
-            <ul class="nav nav-pills pull-right">
-                <li role="presentation"><a href="https://github.com/QOXCorp/jumper.js/zipball/master">Download ZIP</a></li>
-                <li role="presentation"><a href="https://github.com/QOXCorp/jumper.js/tarball/master">Download TAR.GZ</a></li>
-                <li role="presentation"><a href="https://github.com/QOXCorp/jumper.js">Go to Project @ GitHub.com</a></li>
-            </ul>
-            <div class="col-md-3" style="background-color: rgba(0, 0, 0, 0.51); text-align: center">
-                <h3 style="margin: 5px 0; color: #FFF; text-shadow: 1px 1px 5px #000000; ">
-                    <img src="img/qox_q.png" style="max-height: 32px; vertical-align: sub !important;">&nbsp;Jumper.js
-                </h3>
-            </div>
-        </nav>
-        </div>
-    </div>
-    <div>
-        <h4 style="font-weight: normal;">
-            Jumper.js is a javascript quick navigating tool that shows up in front of the web application binding it with a key combination.
 
-        </h4>
-        <h4 style="font-weight: normal;">
-            Very useful to shortcut places in medium to large web applications, made to less clicking and fast navigation.
-        </h4>
-        <div class="well" style="text-align: center">
-            Try it now, press<br>
-            <span class="light-keys">
+<body>
+    <div class="container">
+        <div class="panel panel-default" style="margin: 20px 0">
+            <div class="panel-body">
+                <nav>
+                    <ul class="nav nav-pills pull-right">
+                        <li role="presentation"><a href="https://github.com/QOXCorp/jumper.js/zipball/master">Download ZIP</a></li>
+                        <li role="presentation"><a href="https://github.com/QOXCorp/jumper.js/tarball/master">Download TAR.GZ</a></li>
+                        <li role="presentation"><a href="https://github.com/QOXCorp/jumper.js">Go to Project @ GitHub.com</a></li>
+                    </ul>
+                    <div class="col-md-3" style="background-color: rgba(0, 0, 0, 0.51); text-align: center">
+                        <h3 style="margin: 5px 0; color: #FFF; text-shadow: 1px 1px 5px #000000; ">
+                            <img src="img/qox_q.png" style="max-height: 32px; vertical-align: sub !important;">&nbsp;Jumper.js
+                        </h3>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <div>
+            <h4 style="font-weight: normal;">
+                Jumper.js is a javascript quick navigating tool that shows up in front of the web application binding it with a key combination.
+
+            </h4>
+            <h4 style="font-weight: normal;">
+                Very useful to shortcut places in medium to large web applications, made to less clicking and fast navigation.
+            </h4>
+            <div class="well" style="text-align: center">
+                Try it now, press<br>
+                <span class="light-keys">
                 <kbd>Ctrl</kbd> + <kbd>J</kbd><br>
                 or <br>
                 <kbd>⌘ command</kbd> + <kbd>J</kbd><br>
                 or <br>
                 <kbd>◆</kbd> + <kbd>J</kbd>
                 </span>
-        </div>
-        <h4>Requirements</h4>
-        <p>
-            The current version of Jumper.js requires Bootstrap 3, Bootstrap-dialog, Selectize.js and jQuery. Non-bootstrap version is planned for the future.
+            </div>
+            <h4>Requirements</h4>
+            <p>
+                The current version of Jumper.js requires Bootstrap 3, Bootstrap-dialog, Selectize.js and jQuery. Non-bootstrap version is
+                planned for the future.
 
-        </p>
-        <h5>Optional</h5>
-        <p>
-            Include FontAwesome to show the spinning icon (when loading ajax data).
-        </p>
-        <h4>Jumper Options</h4>
+            </p>
+            <h5>Optional</h5>
+            <p>
+                Include FontAwesome to show the spinning icon (when loading ajax data).
+            </p>
+            <h4>Jumper Options</h4>
 
             <pre>
 <code class="javascript">
 Jumper({
     'data': [
         {
-            'name': 'Home',
-            'url' : '/',
-            'help': 'Go to homepage.'
+            name: 'Home',            
+            help: 'Go to homepage.',
+            action: {
+                url: '/'
+            }
         }
     ]
 });
 </code>
         </pre>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>bindFnKeys</td>
-                <td>
-                    <span style="font-style: italic; font-weight: bold;">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>bindFnKeys</td>
+                        <td>
+                            <span style="font-style: italic; font-weight: bold;">
                             Not required.
-                    </span><br>
-                    Type: String.<br>
-                    Default: event.ctrlKey || event.metaKey.<br>
-                    Set the function key to bind.
-                    <ul>
-                        <li>event.ctrlKey</li>
-                        <li>event.metaKey</li>
-                        <li>event.altKey</li>
-                    </ul>
-                    You can combine using && or ||.
-                </td>
-            </tr>
-            <tr>
-                <td>bindLetter</td>
-                <td><span style="font-style: italic; font-weight: bold;">
+                    </span><br> Type: String.<br> Default: event.ctrlKey || event.metaKey.<br>                            Set the function key to bind.
+                            <ul>
+                                <li>event.ctrlKey</li>
+                                <li>event.metaKey</li>
+                                <li>event.altKey</li>
+                            </ul>
+                            You can combine using && or ||.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>bindLetter</td>
+                        <td><span style="font-style: italic; font-weight: bold;">
                             Not required.
-                    </span><br>
-                    Type: Char.<br>
-                    Default: J.<br>
-                    Set the letter combination to use. (Bound function key plus bound letter triggers Jumper.Open();).
-                </td>
-            </tr>
-                <tr>
-                    <td>data</td>
-                    <td>
-                        <span style="font-style: italic; font-weight: bold;">
+                    </span><br> Type: Char.<br> Default: J.<br> Set the letter combination to use. (Bound function key plus
+                            bound letter triggers Jumper.Open();).
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>data</td>
+                        <td>
+                            <span style="font-style: italic; font-weight: bold;">
                             Not required if using ajax & ajaxserver.
-                        </span><br>
-                        Type: Object Array.<br>
-                        Object array and sets the navigation options, each one has the following options:<br>
-                        <pre>
+                        </span><br> Type: Object Array.<br> Object array and sets the navigation
+                            options, each one has the following options:<br>
+                            <pre>
 <code class="javascript">
     {
-        'name': 'Link Name',
-        'url': 'When click or enter, Jumper go to it',
-        'help': 'Some help for the user',
-        'keywords': 'some,keywords,separated,by,comma',
-        'navcode': 'Stablishes a code for the URL, this is not visible in the input'
+        name: 'Link Name',        
+        help: 'Some help for the user',
+        keywords: 'some,keywords,separated,by,comma',
+        navcode: 'Stablishes a shortcut code, this is not visible in the input',
+        action: {
+            url: 'When click or enter, Jumper go to it', // optional
+            useItemHandler: false, // if true, this will execute the default item handler passing the 'item' object that contains all the object data, false by default
+            method: (item) => {
+                //execute this when selected, item object contains all the object data, not defined by default
+                console.log(item);
+            }
+        },
+        extra: {
+            data1: 'my data' //you can set everything you want in this property, then you can use it from the default handler or the defined 'action.method'.
+        }
     }
 </code>
-                        </pre>
-                        Only <b>name</b> and <b>url</b> keys are required.
-                    </td>
-                </tr>
-            <tr>
-                <td>
-                    ajax
-                </td>
-                <td>
-                    <span style="font-style: italic; font-weight: bold;">
+                        </pre> Only <b>name</b>, <b>help</p> and <b>action</b> keys are required. <b>action</b> parameters
+                            all are optional, but you must define one of them otherwise nothing will happen at selection.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            ajax
+                        </td>
+                        <td>
+                            <span style="font-style: italic; font-weight: bold;">
                             Not required if using data.
-                        </span><br>
-                    Type: Boolean.<br>
-                    Default: false.<br>
-                    Set to true to enable remote data capabilities.
-                </td>
-            </tr>
-                <tr>
-                    <td>
-                        ajaxserver
-                    </td>
-                    <td>
-                        <span style="font-style: italic; font-weight: bold;">
+                        </span><br> Type: Boolean.<br> Default: false.<br> Set to true to enable
+                            remote data capabilities.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            ajaxserver
+                        </td>
+                        <td>
+                            <span style="font-style: italic; font-weight: bold;">
                             Required if using ajax: true.
-                        </span><br>
-                        Type: String.<br>
-                        Set the url of the data provider, the response must be in json format like the following example:<br>
-                        <pre>
+                        </span><br> Type: String.<br> Note: "action.method" is not supported
+                            as an ajax response.<br> Set the url of the data provider, the response must be in json format
+                            like the following example:<br>
+                            <pre>
 <code class="javascript">
-    { 'response': [
+    { "response": [
             {
-                'name': 'Link Name',
-                'url': '/link-name',
-                'help': 'Some help for the user',
-                'keywords': 'some,keywords,separated,by,comma',
-                'navcode': 'Stablishes a code for the URL, this is not visible in the input'
-            },
-            {
-            'name': 'Link Name #2',
-            'url': '/link-name-2',
-            'help': 'Some help for the user',
-            'keywords': 'some,keywords,separated,by,comma',
-            'navcode': 'Stablishes a code for the URL, this is not visible in the input'
+                "name": "Link Name",                
+                "help": "Some help for the user",
+                "keywords": "some,keywords,separated,by,comma",
+                "navcode": "Stablishes a shortcut code, this is not visible in the input",
+                "action": {
+                    "url": "/link-name"
+                }
             }
         ]
     }
 </code>
                         </pre>
-                    </td>
-                </tr>
-            <tr>
-                <td>cache</td>
-                <td>
-                    <span style="font-style: italic; font-weight: bold;">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>cache</td>
+                        <td>
+                            <span style="font-style: italic; font-weight: bold;">
                             Optional if using ajax: true.
-                    </span><br>
-                    Type: Boolean.<br>
-                    Default: false.<br>
-                    Set to true to enable data pre-caching when page loads.
-                </td>
-            </tr>
-            </tbody>
-        </table>
-        <h4>Jumper Methods</h4>
-        <table class="table table-bordered">
-            <thead>
-            <tr>
-                <th>Name</th>
-            <th>Description</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>Jumper(<span style="font-style: italic">options</span>);</td>
-                <td>Constructor, sets the options.</td>
-            </tr>
-            <tr>
-                <td>Jumper.Open();</td>
-                <td>Opens the Jumper modal without using the combination. Jumper must be initalized first using the constructor.</td>
-            </tr>
-            </tbody>
-        </table>
-        <h4>Localization</h4>
-        <p>
-            You can set the text strings of Jumper.js to match your local language (or website language). Just have
-            to set up the following string before Jumper.js is initialized.
-        </p>
-        <pre>
+                    </span><br> Type: Boolean.<br> Default: false.<br> Set to true to enable
+                            data pre-caching when page loads.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <h4>Jumper Methods</h4>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Jumper(<span style="font-style: italic">options</span>);</td>
+                        <td>Constructor, sets the options.</td>
+                    </tr>
+                    <tr>
+                        <td>Jumper.Open();</td>
+                        <td>Opens the Jumper modal without using the combination. Jumper must be initalized first using the constructor.</td>
+                    </tr>
+                    <tr>
+                        <td>Jumper.ItemHandler(item);</td>
+                        <td>This is the handler when the item has "action.useItemHandler" set to true. You must override this function in order to use it. The <b>item</b> argument
+                        contains all of the item original data.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h4>Localization</h4>
+            <p>
+                You can set the text strings of Jumper.js to match your local language (or website language). Just have to set up the following
+                string before Jumper.js is initialized.
+            </p>
+            <pre>
 <code class="javascript">
     // Spanish Language Texts for Jumper (Example).
     Jumper.TEXT_DefaultTitle = 'Navegación rápida';
@@ -220,15 +225,15 @@ Jumper({
     Jumper(options);
 </code>
         </pre>
-        <h4>License</h4>
-        <p>Released under the GPL v3 License, please read the LICENSE file on the GitHub repo.</p>
+            <h4>License</h4>
+            <p>Released under the GPL v3 License, please read the LICENSE file on the GitHub repo.</p>
+        </div>
+        <div style="margin-top: 60px">
+            <p class="text-muted">
+                <b>&copy; 2015 <a href="http://qox-corp.com/">QOX Corporation</a></b> - Hosted on GitHub Pages
+            </p>
+        </div>
     </div>
-    <div style="margin-top: 60px">
-        <p class="text-muted">
-            <b>&copy; 2015 <a href="http://qox-corp.com/">QOX Corporation</a></b> - Hosted on GitHub Pages
-        </p>
-    </div>
-</div>
 </body>
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
 <script src="js/jquery-1.11.2.min.js"></script>
@@ -238,34 +243,52 @@ Jumper({
 <script src="//cdn.rawgit.com/QOXCorp/jumper.js/master/dist/jumper.min.js"></script>
 <script>
     //hljs.configure({useBR: true});
-    $(document).ready(function() {
-        $('pre code').each(function(i, block) {
+    $(document).ready(function () {
+        $('pre code').each(function (i, block) {
             hljs.highlightBlock(block);
         });
     });
     Jumper({
         data: [
             {
-                'name' : 'QOX Corporation Homepage',
-                'url'  : 'http://qox-corp.com',
-                'help' : 'Go to "the" homepage.'
+                name: 'QOX Corporation Homepage',
+                action: {
+                    url: 'http://qox-corp.com'
+                },
+                help: 'Go to "the" homepage.'
             },
             {
-                'name' : 'GitHub.com',
-                'url'  : 'http://github.com',
-                'help' : 'See some amazing opensource projects.'
+                name: 'GitHub.com',
+                action: {
+                    url: 'http://github.com'
+                },
+                help: 'See some amazing opensource projects.'
             },
             {
-                'name' : 'ExEngine PHP Framework',
-                'url'  : 'https://github.com/QOXCorp/exengine',
-                'help' : 'RAD PHP framework with MVC approach.'
+                name: 'ExEngine PHP Framework',
+                action: {
+                    url: 'https://github.com/QOXCorp/exengine'
+                },
+                help: 'RAD PHP framework with MVC approach.'
             },
             {
-                'name' : 'Google',
-                'url'  : 'http://google.com',
-                'help' : 'Useful search engine.'
+                name: 'Google',
+                action: {
+                    url: 'http://google.com'
+                },
+                help: 'Useful search engine.'
+            },
+            {
+                name: 'Javascript Test',
+                action: {
+                    method: () => {
+                        alert('Testing!')
+                    }
+                }                
             }
         ]
     });
+
 </script>
+
 </html>
