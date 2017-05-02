@@ -84,6 +84,14 @@ Jumper({
                 </thead>
                 <tbody>
                     <tr>
+                        <td>debug</td>
+                        <td><span style="font-style: italic; font-weight: bold;">
+                            Not required.
+                    </span><br> Type: Boolean.<br> Default: false.<br>
+                            Set to true to see some useful messages on the JS console.
+                        </td>
+                    </tr>
+                    <tr>
                         <td>bindFnKeys</td>
                         <td>
                             <span style="font-style: italic; font-weight: bold;">
@@ -249,6 +257,7 @@ Jumper({
         });
     });
     Jumper({
+        debug: true,
         data: [
             {
                 name: 'QOX Corporation Homepage',
@@ -280,6 +289,7 @@ Jumper({
             },
             {
                 name: 'Javascript Test',
+                help: 'Test a JS action',
                 action: {
                     method: (item) => {
                         console.log(item);
