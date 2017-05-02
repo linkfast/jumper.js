@@ -281,8 +281,9 @@ Jumper({
             {
                 name: 'Javascript Test',
                 action: {
-                    method: () => {
-                        alert('Testing!')
+                    method: (item) => {
+                        console.log(item);
+                        alert('Testing!');
                     }
                 }                
             }
