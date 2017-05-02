@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "es5",
+        "noImplicitAny": false,
+        "sourceMap": false,
+        "allowSyntheticDefaultImports": true,
+        "outDir": "./js/",
+        "removeComments": true
+    },
+    "include": [
+        "*.ts"
+    ],
+    "exclude": [
+        "def/**/*.ts"
+    ]
+}

@@ -1,6 +1,8 @@
 # jumper.js
 Jumper is a quick navigating tool that shows up in front of the web application binding it with a key combination.
 
+Demo and more: http://qoxcorp.github.io/jumper.js/
+
 # Installation
 This version requires the following javascript libraries:
 - jQuery 1.11.2+ (http://jquery.com/download/)
