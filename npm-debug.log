@@ -1,0 +1,124 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'publish',
+1 verbose cli   '--access',
+1 verbose cli   'public' ]
+2 info using npm@3.10.10
+3 info using node@v6.10.2
+4 verbose publish [ '.' ]
+5 silly cache add args [ '.', null ]
+6 verbose cache add spec .
+7 silly cache add parsed spec Result {
+7 silly cache add   raw: '.',
+7 silly cache add   scope: null,
+7 silly cache add   escapedName: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: '.',
+7 silly cache add   spec: '/Volumes/MacintoshHD/Work/jumper.js',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory /Users/gchiappe/.npm/@qoxcorp/jumper-js/0.0.4/package.tgz not in flight; packing
+9 verbose correctMkdir /Users/gchiappe/.npm correctMkdir not in flight; initializing
+10 info lifecycle @qoxcorp/jumper-js@0.0.4~prepublish: @qoxcorp/jumper-js@0.0.4
+11 silly lifecycle @qoxcorp/jumper-js@0.0.4~prepublish: no script for prepublish, continuing
+12 verbose tar pack [ '/Users/gchiappe/.npm/@qoxcorp/jumper-js/0.0.4/package.tgz',
+12 verbose tar pack   '/Volumes/MacintoshHD/Work/jumper.js' ]
+13 verbose tarball /Users/gchiappe/.npm/@qoxcorp/jumper-js/0.0.4/package.tgz
+14 verbose folder /Volumes/MacintoshHD/Work/jumper.js
+15 verbose addLocalTarball adding from inside cache /Users/gchiappe/.npm/@qoxcorp/jumper-js/0.0.4/package.tgz
+16 verbose correctMkdir /Users/gchiappe/.npm correctMkdir not in flight; initializing
+17 silly cache afterAdd @qoxcorp/jumper-js@0.0.4
+18 verbose afterAdd /Users/gchiappe/.npm/@qoxcorp/jumper-js/0.0.4/package/package.json not in flight; writing
+19 verbose correctMkdir /Users/gchiappe/.npm correctMkdir not in flight; initializing
+20 verbose afterAdd /Users/gchiappe/.npm/@qoxcorp/jumper-js/0.0.4/package/package.json written
+21 silly publish { name: '@qoxcorp/jumper-js',
+21 silly publish   version: '0.0.4',
+21 silly publish   description: 'Jumper.JS is a quick navigation tool for medium to large web applications or sites.',
+21 silly publish   main: 'gulpfile.js',
+21 silly publish   scripts: { build: 'gulp default' },
+21 silly publish   repository:
+21 silly publish    { type: 'git',
+21 silly publish      url: 'git+https://github.com/QOXCorp/jumper.js.git' },
+21 silly publish   keywords: [ 'quick navigation', 'tool', 'bootstrap3' ],
+21 silly publish   author: { name: 'Giancarlo A. Chiappe Aguilar' },
+21 silly publish   license: 'MIT',
+21 silly publish   devDependencies:
+21 silly publish    { '@types/jquery': '^2.0.41',
+21 silly publish      gulp: '^3.9.1',
+21 silly publish      'gulp-rename': '^1.2.2',
+21 silly publish      'gulp-sourcemaps': '^1.12.0',
+21 silly publish      'gulp-typescript': '^3.1.6',
+21 silly publish      'gulp-uglify': '^2.0.0',
+21 silly publish      typescript: '^2.3.2' },
+21 silly publish   dependencies:
+21 silly publish    { 'devtools-detect': '^2.1.1',
+21 silly publish      'bootstrap3-dialog': '^1.35.4',
+21 silly publish      selectize: '^0.12.4' },
+21 silly publish   readme: '# jumper.js\nJumper is a quick navigating tool that shows up in front of the web application binding it with a key combination.\n\nDemo and more: http://qoxcorp.github.io/jumper.js/\n\n## Note about upgrading from 0.0.3 to 0.0.4\n\nThe library was updated to work with TypeScript, also the `data` array has some changes, being the most important the `data[].action` object that now defines the action of the element,\nyou can choose to simply load a new page or run a javascript method, also you can set a handler that receives the item information on selection.\n\n# Building from source\n\nYou must install `nodejs`, `gulp` and `typescript` first.\n\n```\nnpm install\ngulp\n```\n\n# Installation\nThis version requires the following javascript libraries:\n- jQuery 1.11.2+ (http://jquery.com/download/)\n- Bootstrap 3.3.2+ (http://getbootstrap.com/) (non-bootstrap version in the future)\n- Bootstrap-Dialog (https://github.com/nakupanda/bootstrap3-dialog) (non-bootstrap version in the future)\n- Selectize.js (https://github.com/brianreavis/selectize.js)\n\n## Download\n\nDistribution scripts are in the "dist" folder then load as usual in your project.\n\n### Using npm\n\n```\nnpm install --save @qoxcorp/jumper-js\n```\n\n## Typescript Definition\n\nThe definition file for Typescript is located at `src/js/jumper.d.t`.\n\nThen just add the reference at the top of your typescript source file:\n\n```typescript\n///<reference path="jumper.d.ts"/>\n```\n\n## Usage\n\n### Initialize Jumper using:\n```javascript\nJumper(options);\n```\n\n### Example\n\n```javascript\nJumper({\n  \'data\': [\n      { \n        name: \'Home\', \n        help: \'Home of this website.\', \n        keywords: \'home,index,site\', \n        navcode: \'HOME\',\n        action: {            \n            url: \'http://github.com/\'\n        }\n      }\n    ]\n});\n```\n\nBy default Jumper will bind the CONTROL(COMMAND)+J combination, but you can bind what you like using the options.bindFnKeys and bindLetter option:\n\n```javascript\nJumper({\n  \'data\': [\n      { \n        name: \'Home\',         \n        help: \'Home of this website.\', \n        keywords: \'home,index,site\', \n        navcode: \'HOME\',\n        action: {\n          useItemHandler: false,\n          url: \'http://github.com/\',\n          method: (item) => { \n            //do some js stuff \n            console.log(item);\n          }\n        },\n        extra: {\n          extra1: \'value\',\n          extra2: false,\n          extra3: {\n            objectData: true\n          }\n        }\n      }\n    ],\n  \'bindFnKeys\': \'event.ctrlKey\',\n  \'bindLetter\': \'F\'\n});\n```\n\nAlso you can use remote collections using the Ajax option, the data must in the "response" variable in JSON format. The `action.method` is not supported via Ajax.\n\n```php\n<?php\n  # /server.php\n  $data = \n  [\n    [\n      \'name\' => \'Home\',      \n      \'help\' => \'Home of this website.\', \n      \'keywords\' => \'home,index,site\', \n      \'navcode\' => \'HOME\',\n      \'action\' => [\n        \'url\' => \'http://github.com\'\n      ]\n    ]\n  ];\n  print json_encode([\'response\' => $data]);\n?>\n```\n\n```javascript\nJumper({\n  \'ajax\':true,\n  \'ajaxserver\': \'/server.php\',\n  \'bindFnKeys\': \'event.ctrlKey\',\n  \'bindLetter\': \'F\'\n});\n```\n\nJumper can cache the ajax results by setting the cache option to true.\n\n```javascript\nJumper({\n  ajax\':true,\n  ajaxserver: \'/server.php\',\n  cache: true,\n  bindFnKeys: \'event.ctrlKey\',\n  bindLetter: \'F\'\n});\n```\n\n## Language\n\nYou can change Jumper texts by setting the TEXT variables before initializing:\n\n```javascript\n// Spanish Language Texts for Jumper.\nJumper.TEXT_DefaultTitle = \'Menú de Salto de QOX Jumper\';\nJumper.TEXT_Loading = \'Cargando datos, espere porfavor...\'; // For the Ajax Loading view.\nJumper.TEXT_Navigating = \'Navegando, espere porfavor...\';\nJumper.TEXT_QuickNav = \'Escriba aquí un término para navegar rápidamente por el sitio web.\';\nJumper({\n  \'ajax\':true,\n  \'ajaxserver\': \'/server.php\',\n  \'cache\': true\n});\n```\n\n# License\nReleased under the MIT Licence.\n(C) 2017 QOX Corporation.',
+21 silly publish   readmeFilename: 'README.md',
+21 silly publish   gitHead: '37eb3d2a7e9c38a2adad839bf7f51641eefbbe31',
+21 silly publish   bugs: { url: 'https://github.com/QOXCorp/jumper.js/issues' },
+21 silly publish   homepage: 'https://github.com/QOXCorp/jumper.js#readme',
+21 silly publish   _id: '@qoxcorp/jumper-js@0.0.4',
+21 silly publish   _shasum: 'afac10f73aac0526543e038cb02fcdfe00b53fdc',
+21 silly publish   _from: '.' }
+22 verbose getPublishConfig undefined
+23 silly mapToRegistry name @qoxcorp/jumper-js
+24 silly mapToRegistry scope (from package name) @qoxcorp
+25 verbose mapToRegistry no registry URL found in name for scope @qoxcorp
+26 silly mapToRegistry using default registry
+27 silly mapToRegistry registry https://registry.npmjs.org/
+28 silly mapToRegistry data Result {
+28 silly mapToRegistry   raw: '@qoxcorp/jumper-js',
+28 silly mapToRegistry   scope: '@qoxcorp',
+28 silly mapToRegistry   escapedName: '@qoxcorp%2fjumper-js',
+28 silly mapToRegistry   name: '@qoxcorp/jumper-js',
+28 silly mapToRegistry   rawSpec: '',
+28 silly mapToRegistry   spec: 'latest',
+28 silly mapToRegistry   type: 'tag' }
+29 silly mapToRegistry uri https://registry.npmjs.org/@qoxcorp%2fjumper-js
+30 verbose publish registryBase https://registry.npmjs.org/
+31 silly publish uploading /Users/gchiappe/.npm/@qoxcorp/jumper-js/0.0.4/package.tgz
+32 verbose request uri https://registry.npmjs.org/@qoxcorp%2fjumper-js
+33 verbose request sending authorization for write operation
+34 info attempt registry request try #1 at 4:19:35 PM
+35 verbose request using bearer token for auth
+36 verbose request id f398b4422bae927f
+37 http request PUT https://registry.npmjs.org/@qoxcorp%2fjumper-js
+38 http 403 https://registry.npmjs.org/@qoxcorp%2fjumper-js
+39 verbose headers { 'content-type': 'application/json',
+39 verbose headers   'cache-control': 'max-age=0',
+39 verbose headers   'content-length': '128',
+39 verbose headers   'accept-ranges': 'bytes',
+39 verbose headers   date: 'Tue, 02 May 2017 21:19:37 GMT',
+39 verbose headers   via: '1.1 varnish',
+39 verbose headers   connection: 'keep-alive',
+39 verbose headers   'x-served-by': 'cache-atl6230-ATL',
+39 verbose headers   'x-cache': 'MISS',
+39 verbose headers   'x-cache-hits': '0',
+39 verbose headers   'x-timer': 'S1493759976.563129,VS0,VE2255' }
+40 verbose request invalidating /Users/gchiappe/.npm/registry.npmjs.org/_40qoxcorp_252fjumper-js on PUT
+41 error publish Failed PUT 403
+42 verbose stack Error: "You cannot publish over the previously published version 0.0.4. Try bumping the version to 1.0.0" : @qoxcorp/jumper-js
+42 verbose stack     at makeError (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:302:12)
+42 verbose stack     at CachingRegistryClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:290:14)
+42 verbose stack     at Request._callback (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:210:14)
+42 verbose stack     at Request.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/request.js:187:22)
+42 verbose stack     at emitTwo (events.js:106:13)
+42 verbose stack     at Request.emit (events.js:191:7)
+42 verbose stack     at Request.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1048:10)
+42 verbose stack     at emitOne (events.js:96:13)
+42 verbose stack     at Request.emit (events.js:188:7)
+42 verbose stack     at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:969:12)
+43 verbose statusCode 403
+44 verbose pkgid @qoxcorp/jumper-js
+45 verbose cwd /Volumes/MacintoshHD/Work/jumper.js
+46 error Darwin 16.5.0
+47 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "publish" "--access" "public"
+48 error node v6.10.2
+49 error npm  v3.10.10
+50 error code E403
+51 error "You cannot publish over the previously published version 0.0.4. Try bumping the version to 1.0.0" : @qoxcorp/jumper-js
+52 error If you need help, you may report this error at:
+52 error     <https://github.com/npm/npm/issues>
+53 verbose exit [ 1, true ]

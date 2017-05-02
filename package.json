@@ -1,6 +1,6 @@
 {
   "name": "@qoxcorp/jumper-js",
-  "version": "0.0.4",
+  "version": "0.0.4.1",
   "description": "Jumper.JS is a quick navigation tool for medium to large web applications or sites.",
   "main": "gulpfile.js",
   "scripts": {    
