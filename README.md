@@ -36,7 +36,7 @@ npm install --save @qoxcorp/jumper-js
 
 ## Typescript Definition
 
-The definition file for Typescript is located at `src/js/jumper.d.t`.
+The definition file for Typescript is located at `src/js/jumper.d.ts`.
 
 Then just add the reference at the top of your typescript source file:
 
@@ -96,8 +96,8 @@ Jumper({
         }
       }
     ],
-  'bindFnKeys': 'event.ctrlKey',
-  'bindLetter': 'F'
+  bindFnKeys: 'event.ctrlKey',
+  bindLetter: 'F'
 });
 ```
 
@@ -124,10 +124,10 @@ Also you can use remote collections using the Ajax option, the data must in the 
 
 ```javascript
 Jumper({
-  'ajax':true,
-  'ajaxserver': '/server.php',
-  'bindFnKeys': 'event.ctrlKey',
-  'bindLetter': 'F'
+  ajax: true,
+  ajaxserver: '/server.php',
+  bindFnKeys: 'event.ctrlKey',
+  bindLetter: 'F'
 });
 ```
 
@@ -135,7 +135,7 @@ Jumper can cache the ajax results by setting the cache option to true.
 
 ```javascript
 Jumper({
-  ajax':true,
+  ajax: true,
   ajaxserver: '/server.php',
   cache: true,
   bindFnKeys: 'event.ctrlKey',
@@ -154,9 +154,9 @@ Jumper.TEXT_Loading = 'Cargando datos, espere porfavor...'; // For the Ajax Load
 Jumper.TEXT_Navigating = 'Navegando, espere porfavor...';
 Jumper.TEXT_QuickNav = 'Escriba aquí un término para navegar rápidamente por el sitio web.';
 Jumper({
-  'ajax':true,
-  'ajaxserver': '/server.php',
-  'cache': true
+  ajax:true,
+  ajaxserver: '/server.php',
+  cache: true
 });
 ```
 
