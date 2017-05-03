@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <link rel="shortcut icon" href="//www.qox-corp.com/favicon.png" type="image/png">
-    <title>QOX Jumper.js</title>
+    <title>jumper.js</title>
 </head>
 <link href="css/bootstrap.min.css" rel="stylesheet">
-<link href="//cdn.rawgit.com/brianreavis/selectize.js/master/dist/css/selectize.css" rel="stylesheet">
-<link href="//cdn.rawgit.com/brianreavis/selectize.js/master/dist/css/selectize.bootstrap3.css" rel="stylesheet">
-<link href="//cdn.rawgit.com/michaelhue/keyscss/master/keys.css" rel="stylesheet">
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
-
+<link href="https://cdn.rawgit.com/brianreavis/selectize.js/master/dist/css/selectize.css" rel="stylesheet">
+<link href="https://cdn.rawgit.com/brianreavis/selectize.js/master/dist/css/selectize.bootstrap3.css" rel="stylesheet">
+<link href="https://cdn.rawgit.com/michaelhue/keyscss/master/keys.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/default.min.css">
+<script src="https://use.fontawesome.com/1ae2305fae.js"></script>
 <body>
     <div class="container">
         <div class="panel panel-default" style="margin: 20px 0">
@@ -32,37 +32,42 @@
         </div>
         <div>
             <h4 style="font-weight: normal;">
-                Jumper.js is a javascript quick navigating tool that shows up in front of the web application binding it with a key combination.
-
+                <b>jumper.js</b> is a javascript quick navigating tool that shows up in front of the web application binding it with a key combination.
             </h4>
             <h4 style="font-weight: normal;">
-                Very useful to shortcut places in medium to large web applications, made to less clicking and fast navigation.
+                Very useful to shortcut places in medium to large web applications, made for <b>less clicking</b> and <b>faster navigation</b>.
             </h4>
             <div class="well" style="text-align: center">
-                Try it now, press<br>
+                <b>Try it now, press</b><br>
                 <span class="light-keys">
                 <kbd>Ctrl</kbd> + <kbd>J</kbd><br>
-                or <br>
+                <b>or</b> <br>
                 <kbd>⌘ command</kbd> + <kbd>J</kbd><br>
-                or <br>
-                <kbd>◆</kbd> + <kbd>J</kbd>
+                <b>or</b> <br>
+                <kbd>◆</kbd> + <kbd>J</kbd><br>
+                <b>or</b> <br>
+                <a href="#" class="btn btn-primary" onclick="Jumper.Open(); return false">Open Now</a>
                 </span>
             </div>
+            <h4>Installation</h4>
+            <pre>
+<code class="bash">npm install --save @qoxcorp/jumper-js</code></pre>
+            <p>or</p>
+<pre><code class="html">&lt;!-- For version 0.0.4 --&gt; 
+&lt;script src=&quot;//cdn.rawgit.com/QOXCorp/jumper.js/47d26a631f07dbf6970ec92899a13a8acf7eaafe/dist/jumper.min.js&quot;&gt;&lt;/script&gt;</code></pre>
             <h4>Requirements</h4>
             <p>
-                The current version of Jumper.js requires Bootstrap 3, Bootstrap-dialog, Selectize.js and jQuery. Non-bootstrap version is
-                planned for the future.
-
+                The current version of Jumper.js requires Bootstrap 3, Bootstrap-dialog, Selectize.js and jQuery.
+                <br>
+                Non-bootstrap version is planned for future.
             </p>
             <h5>Optional</h5>
             <p>
-                Include FontAwesome to show the spinning icon (when loading ajax data).
+                Include <a href="http://fontawesome.io" target="_blank">Font Awesome</a> to show the spinning icon (when loading ajax data).
             </p>
             <h4>Jumper Options</h4>
 
-            <pre>
-<code class="javascript">
-Jumper({
+            <pre><code class="javascript">Jumper({
     'data': [
         {
             name: 'Home',            
@@ -72,9 +77,7 @@ Jumper({
             }
         }
     ]
-});
-</code>
-        </pre>
+});</code></pre>
             <table class="table table-bordered">
                 <thead>
                     <tr>
@@ -121,27 +124,24 @@ Jumper({
                         </span><br> Type: Object Array.<br> Object array and sets the navigation
                             options, each one has the following options:<br>
                             <pre>
-<code class="javascript">
-    {
-        name: 'Link Name',        
-        help: 'Some help for the user',
-        keywords: 'some,keywords,separated,by,comma',
-        navcode: 'Stablishes a shortcut code, this is not visible in the input',
-        action: {
-            url: 'When click or enter, Jumper go to it', // optional
-            useItemHandler: false, // if true, this will execute the default item handler passing the 'item' object that contains all the object data, false by default
-            method: (item) => {
-                //execute this when selected, item object contains all the object data, not defined by default
-                console.log(item);
-            }
-        },
-        extra: {
-            data1: 'my data' //you can set everything you want in this property, then you can use it from the default handler or the defined 'action.method'.
+<code class="javascript">{
+    name: 'Link Name',        
+    help: 'Some help for the user',
+    keywords: 'some,keywords,separated,by,comma',
+    navcode: 'Stablishes a shortcut code, this is not visible in the input',
+    action: {
+        url: 'When click or enter, Jumper go to it', // optional
+        useItemHandler: false, // if true, this will execute the default item handler passing the 'item' object that contains all the object data, false by default
+        method: (item) => {
+            //execute this when selected, item object contains all the object data, not defined by default
+            console.log(item);
         }
+    },
+    extra: {
+        data1: 'my data' //you can set everything you want in this property, then you can use it from the default handler or the defined 'action.method'.
     }
-</code>
-                        </pre> Only <b>name</b>, <b>help</p> and <b>action</b> keys are required. <b>action</b> parameters
-                            all are optional, but you must define one of them otherwise nothing will happen at selection.
+}</code></pre> Only <b>name</b>, <b>help</b> and <b>action</b> keys are required. All <b>action</b> parameters
+                            are optional, but you must define one of them otherwise nothing will happen at selection.
                         </td>
                     </tr>
                     <tr>
@@ -165,22 +165,18 @@ Jumper({
                         </span><br> Type: String.<br> Note: "action.method" is not supported
                             as an ajax response.<br> Set the url of the data provider, the response must be in json format
                             like the following example:<br>
-                            <pre>
-<code class="javascript">
-    { "response": [
-            {
-                "name": "Link Name",                
-                "help": "Some help for the user",
-                "keywords": "some,keywords,separated,by,comma",
-                "navcode": "Stablishes a shortcut code, this is not visible in the input",
-                "action": {
-                    "url": "/link-name"
-                }
+                            <pre><code class="javascript">{ "response": [
+        {
+            "name": "Link Name",                
+            "help": "Some help for the user",
+            "keywords": "some,keywords,separated,by,comma",
+            "navcode": "Stablishes a shortcut code, this is not visible in the input",
+            "action": {
+                "url": "/link-name"
             }
-        ]
-    }
-</code>
-                        </pre>
+        }
+    ]
+}</code></pre>
                         </td>
                     </tr>
                     <tr>
@@ -223,32 +219,31 @@ Jumper({
                 You can set the text strings of Jumper.js to match your local language (or website language). Just have to set up the following
                 string before Jumper.js is initialized.
             </p>
-            <pre>
-<code class="javascript">
-    // Spanish Language Texts for Jumper (Example).
+            <pre><code class="javascript">// Spanish Language Texts for Jumper (Example).
     Jumper.TEXT_DefaultTitle = 'Navegación rápida';
     Jumper.TEXT_Loading = 'Cargando datos, espere porfavor...'; // For the Ajax Loading view.
     Jumper.TEXT_Navigating = 'Navegando, espere porfavor...';
     Jumper.TEXT_QuickNav = 'Escriba aquí un término para navegar rápidamente por el sitio web.';
-    Jumper(options);
-</code>
-        </pre>
+    Jumper(options);</code></pre>
             <h4>License</h4>
-            <p>Released under the GPL v3 License, please read the LICENSE file on the GitHub repo.</p>
+            <p>Released under the <b>MIT License</b>, for more detail, please read the LICENSE file on the GitHub repo.</p>
         </div>
         <div style="margin-top: 60px">
             <p class="text-muted">
-                <b>&copy; 2015 <a href="http://qox-corp.com/">QOX Corporation</a></b> - Hosted on GitHub Pages
+                Made with <i class="fa fa-heart" aria-hidden="true"></i> in Lima.
+            </p>
+            <p class="text-muted">
+                <b>&copy; 2015-2017 <a href="https://oss.qox-corp.com/">QOX Corporation</a> (OSS)</b> - Hosted on GitHub Pages
             </p>
         </div>
     </div>
 </body>
-<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js"></script>
 <script src="js/jquery-1.11.2.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
-<script src="//cdn.rawgit.com/brianreavis/selectize.js/master/dist/js/standalone/selectize.min.js"></script>
-<script src="//cdn.rawgit.com/nakupanda/bootstrap3-dialog/master/dist/js/bootstrap-dialog.min.js"></script>
-<script src="//cdn.rawgit.com/QOXCorp/jumper.js/47d26a631f07dbf6970ec92899a13a8acf7eaafe/dist/jumper.min.js"></script>
+<script src="https://cdn.rawgit.com/brianreavis/selectize.js/master/dist/js/standalone/selectize.min.js"></script>
+<script src="https://cdn.rawgit.com/nakupanda/bootstrap3-dialog/master/dist/js/bootstrap-dialog.min.js"></script>
+<script src="https://cdn.rawgit.com/QOXCorp/jumper.js/47d26a631f07dbf6970ec92899a13a8acf7eaafe/dist/jumper.min.js"></script>
 <script>
     //hljs.configure({useBR: true});
     $(document).ready(function () {
@@ -262,14 +257,14 @@ Jumper({
             {
                 name: 'QOX Corporation Homepage',
                 action: {
-                    url: 'http://qox-corp.com'
+                    url: 'https://qox-corp.com'
                 },
                 help: 'Go to "the" homepage.'
             },
             {
                 name: 'GitHub.com',
                 action: {
-                    url: 'http://github.com'
+                    url: 'https://github.com'
                 },
                 help: 'See some amazing opensource projects.'
             },
@@ -283,7 +278,7 @@ Jumper({
             {
                 name: 'Google',
                 action: {
-                    url: 'http://google.com'
+                    url: 'https://google.com'
                 },
                 help: 'Useful search engine.'
             },
@@ -293,14 +288,12 @@ Jumper({
                 action: {
                     method: (item) => {
                         console.log(item);
-                        alert('Testing!');
-                    },
-                    url: ''
+                        alert('Just a test!');
+                    }
                 }                
             }
-        ]
+        ]    
     });
-
 </script>
 
 </html>
