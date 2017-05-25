@@ -47,6 +47,9 @@ interface JumperObj {
     Log?: (...args: any[]) => void
     ItemHandler?: (item: JumperData) => void
     Options?: JumperIntOptions
+    Rebind?: () => void
+    ProcessKey?: (event) => void
+    Unbind?: () => void
 
     Cache?: boolean
     InCache?: boolean

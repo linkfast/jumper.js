@@ -49,16 +49,7 @@ Jumper = function (options) {
     }
     Jumper.Options.bindLetter = options.bindLetter.toLowerCase();
     Jumper.Options.cacheAtInit = true;
-    $(window).bind('keydown', function (event) {
-        if (eval(Jumper.Options.bindFnKeys)) {
-            switch (String.fromCharCode(event.which).toLowerCase()) {
-                case Jumper.Options.bindLetter:
-                    event.preventDefault();
-                    Jumper.Open();
-                    break;
-            }
-        }
-    });
+    $(window).on('keydown', Jumper.ProcessKey);
     var showKeys = 'CONTROL/COMMAND';
     if (Jumper.Options.bindFnKeys != Jumper.KeysControl)
         showKeys = Jumper.Options.bindFnKeys;
@@ -72,6 +63,23 @@ Jumper = function (options) {
         }, 'json');
     }
     Jumper.Initialized = true;
+};
+Jumper.ProcessKey = function (event) {
+    if (eval(Jumper.Options.bindFnKeys)) {
+        Jumper.Log(String.fromCharCode(event.which).toLowerCase());
+        switch (String.fromCharCode(event.which).toLowerCase()) {
+            case Jumper.Options.bindLetter:
+                event.preventDefault();
+                Jumper.Open();
+                break;
+        }
+    }
+};
+Jumper.Rebind = function () {
+    $(window).on('keydown', Jumper.ProcessKey);
+};
+Jumper.Unbind = function () {
+    $(window).off('keydown', Jumper.ProcessKey);
 };
 Jumper.UpdateBSD = function (setHtml) {
     if (!(typeof setHtml != 'undefined' && setHtml)) {

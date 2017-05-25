@@ -55,17 +55,7 @@ Jumper = (options: JumperOptions) => {
     }
     Jumper.Options.bindLetter = options.bindLetter.toLowerCase();
     Jumper.Options.cacheAtInit = true;
-    $(window).bind('keydown', function (event) {
-        if (eval(Jumper.Options.bindFnKeys)) {
-            //console.log(String.fromCharCode(event.which).toLowerCase());
-            switch (String.fromCharCode(event.which).toLowerCase()) {
-                case Jumper.Options.bindLetter:
-                    event.preventDefault();
-                    Jumper.Open();
-                    break;
-            }
-        }
-    });
+    $(window).on('keydown', Jumper.ProcessKey);
     var showKeys = 'CONTROL/COMMAND';
     if (Jumper.Options.bindFnKeys != Jumper.KeysControl) showKeys = Jumper.Options.bindFnKeys;
     Jumper.Log('QOX Jumper: Initialized. (Open with: ' + showKeys + ' + ' + Jumper.Options.bindLetter.toUpperCase() + ')');
@@ -78,6 +68,26 @@ Jumper = (options: JumperOptions) => {
         }, 'json');
     }
     Jumper.Initialized = true;
+}
+
+Jumper.ProcessKey = function (event) {
+    if (eval(Jumper.Options.bindFnKeys)) {
+        Jumper.Log(String.fromCharCode(event.which).toLowerCase());
+        switch (String.fromCharCode(event.which).toLowerCase()) {
+            case Jumper.Options.bindLetter:
+                event.preventDefault();
+                Jumper.Open();
+                break;
+        }
+    }
+}
+
+Jumper.Rebind = function () {
+    $(window).on('keydown', Jumper.ProcessKey);
+}
+
+Jumper.Unbind = function () {
+    $(window).off('keydown', Jumper.ProcessKey);
 }
 
 Jumper.UpdateBSD = function (setHtml) {
@@ -111,7 +121,7 @@ Jumper.UpdateBSD = function (setHtml) {
                     }
                 }
                 if (typeof item.action.method != 'undefined') {
-                    if (item.action.method != null) {                        
+                    if (item.action.method != null) {
                         item.action.method(item)
                     }
                 }
@@ -154,7 +164,7 @@ Jumper.Open = function () {
         if (Jumper.Bootstrap3) {
             if (!Jumper.BSD_Open) {
                 Jumper.Log('Triggered!')
-                var Modal : IBootstrapDialogOptions = {               
+                var Modal: IBootstrapDialogOptions = {
                     title: Jumper.TEXT_DefaultTitle,
                     draggable: false,
                     closable: true,
@@ -205,7 +215,7 @@ Jumper.Open = function () {
         }
     }
 }
-Jumper.Log = function() {
+Jumper.Log = function () {
     if (Jumper.Options.debug) {
         console.log.apply(console, arguments)
     }
