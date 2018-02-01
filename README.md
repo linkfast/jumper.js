@@ -3,17 +3,30 @@ Jumper is a quick navigating tool that shows up in front of the web application 
 
 Demo and more: http://qoxcorp.github.io/jumper.js/
 
+## Note about upgrading from 0.0.4 to 0.0.5
+
+For security reasons, the `eval` function used to bind the keys is removed, now the `bindFnKeys` option is a function that returns a boolean and has the  `JQueryEventObject` as unique argument. To make combinations you should use the `||` or `&&` boolean operators as the return statement of the functions.
+
+See below for examples of this.
+
 ## Note about upgrading from 0.0.3 to 0.0.4
 
-The library was updated to work with TypeScript, also the `data` array has some changes, being the most important the `data[].action` object that now defines the action of the element,
-you can choose to simply load a new page or run a javascript method, also you can set a handler that receives the item information on selection.
+The library was migrated to TypeScript, also the `data` array has some changes, being the most important the `data[].action` object that now defines the action of the element, you can choose to simply load a new page or run a javascript method, also you can set a handler that receives the item information on selection.
 
 # Building from source
 
 You must install `nodejs`, `gulp` and `typescript` first.
 
+```bash
+npm install -g gulp typescript # or yarn add --global gulp typescript
 ```
-npm install
+
+Then:
+
+```bash
+git clone https://github.com/QOXCorp/jumper.js.git
+cd jumper.js
+npm install # or yarn
 gulp
 ```
 
@@ -69,7 +82,7 @@ Jumper({
 });
 ```
 
-By default Jumper will bind the CONTROL(COMMAND)+J combination, but you can bind what you like using the options.bindFnKeys and bindLetter option:
+By default Jumper will bind the CONTROL(COMMAND)+J combination, but you can bind what you like using the `options.bindFnKeys` and bindLetter option:
 
 ```javascript
 Jumper({
@@ -96,7 +109,7 @@ Jumper({
         }
       }
     ],
-  bindFnKeys: 'event.ctrlKey',
+  bindFnKeys: (event) => event.ctrlKey, // or function(event) { return event.ctrlKey }
   bindLetter: 'F'
 });
 ```
@@ -126,7 +139,7 @@ Also you can use remote collections using the Ajax option, the data must in the 
 Jumper({
   ajax: true,
   ajaxserver: '/server.php',
-  bindFnKeys: 'event.ctrlKey',
+  bindFnKeys: (event) => event.ctrlKey, // or function(event) { return event.ctrlKey }
   bindLetter: 'F'
 });
 ```
@@ -138,12 +151,12 @@ Jumper({
   ajax: true,
   ajaxserver: '/server.php',
   cache: true,
-  bindFnKeys: 'event.ctrlKey',
+  bindFnKeys: (event) => event.ctrlKey, // or function(event) { return event.ctrlKey }
   bindLetter: 'F'
 });
 ```
 
-## Language
+##Language
 
 You can change Jumper texts by setting the TEXT variables before initializing:
 
@@ -160,6 +173,7 @@ Jumper({
 });
 ```
 
-# License
+#License
 Released under the MIT Licence.
-(C) 2017 QOX Corporation.
+(C) Copyright 2016-2017 QOX Corporation.
+(C) Copyright 2018 LinkFast S.A.
