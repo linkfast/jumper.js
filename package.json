@@ -1,9 +1,9 @@
 {
   "name": "@qoxcorp/jumper-js",
-  "version": "0.0.4a",
+  "version": "0.0.5",
   "description": "Jumper.JS is a quick navigation tool for medium to large web applications or sites.",
   "main": "gulpfile.js",
-  "scripts": {    
+  "scripts": {
     "build": "gulp default"
   },
   "repository": {
@@ -18,8 +18,11 @@
   "author": "Giancarlo A. Chiappe Aguilar",
   "license": "MIT",
   "devDependencies": {
+    "@types/bootstrap": "^3.3.37",
     "@types/jquery": "^2.0.41",
+    "@types/selectize": "^0.12.33",
     "gulp": "^3.9.1",
+    "gulp-minify": "^2.1.0",
     "gulp-rename": "^1.2.2",
     "gulp-sourcemaps": "^1.12.0",
     "gulp-typescript": "^3.1.6",
@@ -27,8 +30,8 @@
     "typescript": "^2.3.2"
   },
   "dependencies": {
-    "devtools-detect": "^2.1.1",
     "bootstrap3-dialog": "^1.35.4",
+    "devtools-detect": "^2.1.1",
     "selectize": "^0.12.4"
   }
 }

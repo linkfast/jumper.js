@@ -20,7 +20,7 @@ interface JumperData {
 }
 
 interface JumperOptions {
-    bindFnKeys?: string
+    bindFnKeys?: (event: JQueryEventObject) => boolean
     bindLetter?: string
     cache?: boolean
     ajax?: boolean
@@ -30,7 +30,7 @@ interface JumperOptions {
 }
 
 interface JumperIntOptions {
-    bindFnKeys: string
+    bindFnKeys: (event: JQueryEventObject) => boolean
     bindLetter: string
     data: JumperData[]
 
@@ -48,7 +48,7 @@ interface JumperObj {
     ItemHandler?: (item: JumperData) => void
     Options?: JumperIntOptions
     Rebind?: () => void
-    ProcessKey?: (event) => void
+    ProcessKey?: (event: JQueryEventObject) => void
     Unbind?: () => void
 
     Cache?: boolean

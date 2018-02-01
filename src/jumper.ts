@@ -56,9 +56,11 @@ Jumper = (options: JumperOptions) => {
     Jumper.Options.bindLetter = options.bindLetter.toLowerCase();
     Jumper.Options.cacheAtInit = true;
     $(window).on('keydown', Jumper.ProcessKey);
-    var showKeys = 'CONTROL/COMMAND';
-    if (Jumper.Options.bindFnKeys != Jumper.KeysControl) showKeys = Jumper.Options.bindFnKeys;
-    Jumper.Log('QOX Jumper: Initialized. (Open with: ' + showKeys + ' + ' + Jumper.Options.bindLetter.toUpperCase() + ')');
+
+    //var showKeys = 'CONTROL/COMMAND';
+    //if (Jumper.Options.bindFnKeys != Jumper.KeysControl) showKeys = Jumper.Options.bindFnKeys;
+
+    Jumper.Log('QOX Jumper: Initialized.');
     if (Jumper.Options.ajax && Jumper.Cache && Jumper.Options.cacheAtInit) {
         Jumper.Log('QOX Jumper: PreCaching results @ Init...');
         $.post(Jumper.Options.ajaxserver, { 'jumper_version': Jumper.VERSION }, function (data) {
@@ -70,8 +72,8 @@ Jumper = (options: JumperOptions) => {
     Jumper.Initialized = true;
 }
 
-Jumper.ProcessKey = function (event) {
-    if (eval(Jumper.Options.bindFnKeys)) {
+Jumper.ProcessKey = function (event: JQueryEventObject) {
+    if (Jumper.Options.bindFnKeys(event)) {
         Jumper.Log(String.fromCharCode(event.which).toLowerCase());
         switch (String.fromCharCode(event.which).toLowerCase()) {
             case Jumper.Options.bindLetter:
@@ -224,12 +226,12 @@ Jumper.ItemHandler = (item) => {
     Jumper.Log('Default Item Handler, Item:', item)
 }
 
-Jumper.VERSION = '0.0.4'
+Jumper.VERSION = '0.0.5'
 
 Jumper.Initialized = false
 Jumper.Bootstrap3 = false
 Jumper.Options = {
-    bindFnKeys: 'event.ctrlKey || event.metaKey',
+    bindFnKeys: (event) => event.ctrlKey || event.metaKey,
     bindLetter: 'J',
     data: null,
     ajax: false,
