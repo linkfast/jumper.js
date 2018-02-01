@@ -53,8 +53,8 @@
             <pre>
 <code class="bash">npm install --save @qoxcorp/jumper-js</code></pre>
             <p>or</p>
-<pre><code class="html">&lt;!-- For version 0.0.4 --&gt; 
-&lt;script src=&quot;//cdn.rawgit.com/QOXCorp/jumper.js/47d26a631f07dbf6970ec92899a13a8acf7eaafe/dist/jumper.min.js&quot;&gt;&lt;/script&gt;</code></pre>
+<pre><code class="html">&#x3C;!-- For version 0.0.5 --&#x3E; 
+&#x3C;script src=&#x22;//cdn.rawgit.com/QOXCorp/jumper.js/0.0.5/dist/jumper.min.js&#x22;&#x3E;&#x3C;/script&#x3E;</code></pre>
             <h4>Requirements</h4>
             <p>
                 The current version of Jumper.js requires Bootstrap 3, Bootstrap-dialog, Selectize.js and jQuery.
@@ -89,31 +89,34 @@
                     <tr>
                         <td>debug</td>
                         <td><span style="font-style: italic; font-weight: bold;">
-                            Not required.
-                    </span><br> Type: Boolean.<br> Default: false.<br>
-                            Set to true to see some useful messages on the JS console.
+                            Optional.
+                    </span><br> Type: <code class="javascript">boolean</code>.<br> 
+                    Default: <code class="javascript">false</code>.<br>
+                            Set to <code class="javascript">true</code> to see some useful messages on the JS console.
                         </td>
                     </tr>
                     <tr>
                         <td>bindFnKeys</td>
                         <td>
                             <span style="font-style: italic; font-weight: bold;">
-                            Not required.
-                    </span><br> Type: String.<br> Default: event.ctrlKey || event.metaKey.<br>                            Set the function key to bind.
+                            Optional.
+                    </span><br> Type: <code class="javascript">function(event: JQueryEventObject) => boolean</code>.<br> Default: 
+                    <code class="javascript">function(event) { return event.ctrlKey || event.metaKey; }</code>.<br>
+                    Set the function key to bind.
                             <ul>
-                                <li>event.ctrlKey</li>
-                                <li>event.metaKey</li>
-                                <li>event.altKey</li>
+                                <li><code class="javascript">event.ctrlKey</code></li>
+                                <li><code class="javascript">event.metaKey</code></li>
+                                <li><code class="javascript">event.altKey</code></li>
                             </ul>
-                            You can combine using && or ||.
+                            You can combine using <code class="javascript">&&</code> or <code class="javascript">||</code>.
                         </td>
                     </tr>
                     <tr>
                         <td>bindLetter</td>
                         <td><span style="font-style: italic; font-weight: bold;">
-                            Not required.
-                    </span><br> Type: Char.<br> Default: J.<br> Set the letter combination to use. (Bound function key plus
-                            bound letter triggers Jumper.Open();).
+                            Optional.
+                    </span><br> Type: <code class="javascript">char</code>.<br> Default: <code class="javascript">J</code>.<br> Set the letter combination to use. (Bound function key plus
+                            bound letter triggers <code class="javascript">Jumper.Open();</code>).
                         </td>
                     </tr>
                     <tr>
@@ -121,7 +124,7 @@
                         <td>
                             <span style="font-style: italic; font-weight: bold;">
                             Not required if using ajax & ajaxserver.
-                        </span><br> Type: Object Array.<br> Object array and sets the navigation
+                        </span><br> Type: <code class="javascript">Object[]</code>.<br> Object array and sets the navigation
                             options, each one has the following options:<br>
                             <pre>
 <code class="javascript">{
@@ -151,7 +154,7 @@
                         <td>
                             <span style="font-style: italic; font-weight: bold;">
                             Not required if using data.
-                        </span><br> Type: Boolean.<br> Default: false.<br> Set to true to enable
+                        </span><br> Type: <code class="javascript">boolean</code>.<br> Default: <code class="javascript">false</code>.<br> Set to <code class="javascript">true</code> to enable
                             remote data capabilities.
                         </td>
                     </tr>
@@ -162,7 +165,7 @@
                         <td>
                             <span style="font-style: italic; font-weight: bold;">
                             Required if using ajax: true.
-                        </span><br> Type: String.<br> Note: "action.method" is not supported
+                        </span><br> Type: <code class="javascript">string</code>.<br> Note: "action.method" is not supported
                             as an ajax response.<br> Set the url of the data provider, the response must be in json format
                             like the following example:<br>
                             <pre><code class="javascript">{ "response": [
@@ -184,7 +187,7 @@
                         <td>
                             <span style="font-style: italic; font-weight: bold;">
                             Optional if using ajax: true.
-                    </span><br> Type: Boolean.<br> Default: false.<br> Set to true to enable
+                    </span><br> Type: <code class="javascript">boolean</code>.<br> Default: <code class="javascript">false</code>.<br> Set to <code class="javascript">true</code> to enable
                             data pre-caching when page loads.
                         </td>
                     </tr>
@@ -200,16 +203,16 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Jumper(<span style="font-style: italic">options</span>);</td>
+                        <td><code class="javascript">Jumper(<span style="font-style: italic">options</span>);</code></td>
                         <td>Constructor, sets the options.</td>
                     </tr>
                     <tr>
-                        <td>Jumper.Open();</td>
+                        <td><code class="javascript">Jumper.Open();</code></td>
                         <td>Opens the Jumper modal without using the combination. Jumper must be initalized first using the constructor.</td>
                     </tr>
                     <tr>
-                        <td>Jumper.ItemHandler(item);</td>
-                        <td>This is the handler when the item has "action.useItemHandler" set to true. You must override this function in order to use it. The <b>item</b> argument
+                        <td><code class="javascript">Jumper.ItemHandler(item);</code></td>
+                        <td>This is the handler when the item has <code class="javascript">action.useItemHandler</code> set to <code class="javascript">true</code>. You must override this function in order to use it. The <b>item</b> argument
                         contains all of the item original data.</td>
                     </tr>
                 </tbody>
@@ -233,7 +236,8 @@
                 Made with <i class="fa fa-heart" aria-hidden="true"></i> in Lima.
             </p>
             <p class="text-muted">
-                <b>&copy; 2015-2017 <a href="https://oss.qox-corp.com/">QOX Corporation</a> (OSS)</b> - Hosted on GitHub Pages
+                <b>&copy; 2016-2017 QOX Corporation (OSS)</b><br>
+                <b>&copy; 2018 <a href="https://www.linkfastsa.com/">LinkFast S.A.</a></b> - Hosted on GitHub Pages
             </p>
         </div>
     </div>
